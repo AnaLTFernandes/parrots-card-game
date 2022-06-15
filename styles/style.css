@@ -19,6 +19,33 @@ h1 {
     color: #75B79E;
 }
 
+.card {
+    width: 117px;
+    height: 146px;
+    border-radius: 5px;
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    position: relative;
+    margin: 0 17px 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+
+.mesa {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 47px;
+}
+
 @media (max-width: 767px) {
     h1 {
         font-size: 36px;
