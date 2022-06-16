@@ -19,6 +19,14 @@ h1 {
     color: #75B79E;
 }
 
+.mesa {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 47px;
+}
+
 .card {
     width: 117px;
     height: 146px;
@@ -53,6 +61,8 @@ div img {
 .card.virar,
 .card.parCerto {
     transform: rotateY(180deg);
+    cursor: initial;
+    pointer-events: none;
 }
 
 .front-face {
@@ -69,19 +79,11 @@ div img {
     transform: rotateY(0);
 }
 
-.time-out {
-    pointer-events: none;
-}
-
-.mesa {
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 47px;
-}
-
 @media (max-width: 767px) {
+    .titulo {
+        display: contents;
+    }
+
     h1 {
         font-size: 36px;
         line-height: 42px;

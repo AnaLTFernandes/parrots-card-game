@@ -1,11 +1,15 @@
-let qdtCartas;
 let listaCards = [1,2,3,4,5,6,7];
-let baralho = [];
-let contadorClique = 0;
+let contadorClique;
+let qdtCartas;
+let baralho;
+let timer;
 
+function jogar() {
+setTimeout(function comecarJogo() {
+    
+    baralho = [];
+    contadorClique = 0;
 
-setTimeout(() => {
-        
     qdtCartas = prompt("Com quantas cartas deseja jogar? (4-14)");
     qdtCartas = Number(qdtCartas);
 
@@ -14,8 +18,11 @@ setTimeout(() => {
         qdtCartas = Number(qdtCartas);
     }
 
-    atualizarBaralho()
+    atualizarBaralho();
 }, 1500);
+}
+
+jogar();
 
 
 function atualizarBaralho() {
@@ -84,9 +91,28 @@ function finalizarJogo() {
     let cartasCertas = document.querySelectorAll(".parCerto");
 
     if (cartasCertas.length === qdtCartas) {
+
         setTimeout(() => {
             alert(`Você ganhou em ${contadorClique} jogadas!`);
         }, 500);
+
+        setTimeout(() => {
+            reiniciarPartida();
+        }, 1000);
+    }
+}
+
+
+function reiniciarPartida() {
+    let reiniciar = prompt("Deseja jogar novamente? (sim/não)");
+
+    while (reiniciar !== "sim" && reiniciar !== "não") {
+        reiniciar = prompt("Deseja jogar novamente? (sim/não)");
+    }
+
+    if (reiniciar === 'sim') {
+        document.querySelector(".mesa").innerHTML = '';
+        jogar();
     }
 }
 
