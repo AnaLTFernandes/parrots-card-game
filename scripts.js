@@ -9,8 +9,13 @@ setTimeout(() => {
 
     for (let i = 0; i < qdtCartas; i++) {
         document.querySelector(".mesa").innerHTML += `
-        <div class="card back" onclick="virarCard(this)">
-            <img src="./img/back-face.png">
+        <div class="card" onclick="virarCard(this)">
+            <div class="back-face face">
+                <img src="./img/back-face.png">
+            </div>
+            <div class="front-face face">
+                <img src="./img/front-face/bobrossparrot.gif">
+            </div>
         </div>`;
     }
 }, 1500);
@@ -18,6 +23,4 @@ setTimeout(() => {
 
 function virarCard(carta) {
     carta.classList.toggle("virar");
-    carta.classList.toggle("back");
-    carta.classList.toggle("front");
 }
