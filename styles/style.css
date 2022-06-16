@@ -31,6 +31,7 @@ h1 {
     align-items: center;
     justify-content: center;
     transition: transform 1s;
+    cursor: pointer;
 }
 
 .card div {
@@ -47,10 +48,6 @@ h1 {
 div img {
     width: 90px;
     height: 90px
-}
-
-.parCerto {
-    pointer-events: none;
 }
 
 .card.virar,
@@ -70,6 +67,10 @@ div img {
 .card.virar .front-face,
 .card.parCerto .front-face {
     transform: rotateY(0);
+}
+
+.time-out {
+    pointer-events: none;
 }
 
 .mesa {

@@ -1,14 +1,17 @@
 let qdtCartas;
 let listaCards = [1,2,3,4,5,6,7];
 let baralho = [];
+let contadorClique = 0;
 
 
 setTimeout(() => {
         
     qdtCartas = prompt("Com quantas cartas deseja jogar? (4-14)");
+    qdtCartas = Number(qdtCartas);
 
     while ((qdtCartas % 2) !== 0 || qdtCartas < 4 || qdtCartas > 14) {
         qdtCartas = prompt("Com quantas cartas deseja jogar?");
+        qdtCartas = Number(qdtCartas);
     }
 
     atualizarBaralho()
@@ -32,7 +35,7 @@ function atualizarBaralho() {
 function colocarCartas() {
 
     for (let i = 0; i < qdtCartas; i++) {
-
+        
         document.querySelector(".mesa").innerHTML += `
         <div class="card" onclick="virarCard(this)">
             <div class="back-face face">
@@ -47,6 +50,7 @@ function colocarCartas() {
 
 
 function virarCard(carta) {
+    contadorClique++;
     carta.classList.toggle("virar");
 
     verificarCards();
@@ -54,10 +58,10 @@ function virarCard(carta) {
 
 
 function verificarCards() {
-    let cartasViradas = [];
     cartasViradas = document.querySelectorAll(".virar");
 
     if (cartasViradas.length === 2) {
+
         let card1 = cartasViradas.item(0).querySelector(".front-face img").src;
         let card2 = cartasViradas.item(1).querySelector(".front-face img").src;
 
@@ -70,6 +74,19 @@ function verificarCards() {
             cartasViradas.item(0).classList.remove("virar");
             cartasViradas.item(1).classList.remove("virar");
         }, 1000);
+
+        finalizarJogo();
+    }
+}
+
+
+function finalizarJogo() {
+    let cartasCertas = document.querySelectorAll(".parCerto");
+
+    if (cartasCertas.length === qdtCartas) {
+        setTimeout(() => {
+            alert(`Você ganhou em ${contadorClique} jogadas!`);
+        }, 500);
     }
 }
 
