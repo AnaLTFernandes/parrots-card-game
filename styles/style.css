@@ -30,12 +30,17 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 1s;
 }
 
 .card img {
     width: 100px;
     height: 100px;
     position: absolute;
+}
+
+.virar {
+    transform: rotateY(180deg);
 }
 
 .mesa {
