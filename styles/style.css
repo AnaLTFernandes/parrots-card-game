@@ -12,11 +12,23 @@ body > div {
     align-items: center;
 }
 
+.finish {
+    background-color: whitesmoke;
+    opacity: 80%;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
 h1 {
     font-weight: 700;
     font-size: 56px;
     line-height: 65px;
     color: #75B79E;
+    display: contents;
 }
 
 .mesa {
@@ -87,5 +99,6 @@ div img {
     h1 {
         font-size: 36px;
         line-height: 42px;
+        display: flex;
     }
 }

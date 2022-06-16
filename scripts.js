@@ -4,22 +4,23 @@ let qdtCartas;
 let baralho;
 let timer;
 
+
 function jogar() {
-setTimeout(function comecarJogo() {
-    
-    baralho = [];
-    contadorClique = 0;
+    setTimeout(function() {
+        
+        baralho = [];
+        contadorClique = 0;
 
-    qdtCartas = prompt("Com quantas cartas deseja jogar? (4-14)");
-    qdtCartas = Number(qdtCartas);
-
-    while ((qdtCartas % 2) !== 0 || qdtCartas < 4 || qdtCartas > 14) {
-        qdtCartas = prompt("Com quantas cartas deseja jogar?");
+        qdtCartas = prompt("Com quantas cartas deseja jogar? (4-14)");
         qdtCartas = Number(qdtCartas);
-    }
 
-    atualizarBaralho();
-}, 1500);
+        while ((qdtCartas % 2) !== 0 || qdtCartas < 4 || qdtCartas > 14) {
+            qdtCartas = prompt("Com quantas cartas deseja jogar?");
+            qdtCartas = Number(qdtCartas);
+        }
+
+        atualizarBaralho();
+    }, 1000);
 }
 
 jogar();
@@ -93,8 +94,12 @@ function finalizarJogo() {
     if (cartasCertas.length === qdtCartas) {
 
         setTimeout(() => {
-            alert(`Você ganhou em ${contadorClique} jogadas!`);
+            document.querySelector(".fim").classList.add("finish");
         }, 500);
+
+        setTimeout(() => {
+            alert(`Você ganhou em ${contadorClique} jogadas!`);
+        }, 700);
 
         setTimeout(() => {
             reiniciarPartida();
@@ -114,9 +119,18 @@ function reiniciarPartida() {
         document.querySelector(".mesa").innerHTML = '';
         jogar();
     }
+
+    document.querySelector(".fim").classList.remove("finish");
 }
 
 
 function embaralhar() {
     return Math.random() - 0.5;
 }
+
+/*
+function timer() {
+    timer++;
+    console.log(timer);
+}
+*/
