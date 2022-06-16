@@ -20,8 +20,6 @@ function atualizarBaralho() {
 
     for (let i = 0; i < (qdtCartas/2); i++) {
         baralho.push(listaCards[i]);
-    }
-    for (let i = 0; i < (qdtCartas/2); i++) {
         baralho.push(listaCards[i]);
     }
     
@@ -32,7 +30,9 @@ function atualizarBaralho() {
 
 
 function colocarCartas() {
+
     for (let i = 0; i < qdtCartas; i++) {
+
         document.querySelector(".mesa").innerHTML += `
         <div class="card" onclick="virarCard(this)">
             <div class="back-face face">
@@ -48,6 +48,29 @@ function colocarCartas() {
 
 function virarCard(carta) {
     carta.classList.toggle("virar");
+
+    verificarCards();
+}
+
+
+function verificarCards() {
+    let cartasViradas = [];
+    cartasViradas = document.querySelectorAll(".virar");
+
+    if (cartasViradas.length === 2) {
+        let card1 = cartasViradas.item(0).querySelector(".front-face img").src;
+        let card2 = cartasViradas.item(1).querySelector(".front-face img").src;
+
+        if (card1 === card2) {
+            cartasViradas.item(0).classList.add("parCerto");
+            cartasViradas.item(1).classList.add("parCerto");
+        }
+
+        setTimeout(() => {
+            cartasViradas.item(0).classList.remove("virar");
+            cartasViradas.item(1).classList.remove("virar");
+        }, 1000);
+    }
 }
 
 
