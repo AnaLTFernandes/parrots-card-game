@@ -1,13 +1,17 @@
 let listaCards = [1,2,3,4,5,6,7];
+let pontuacao;
+let timer;
 let contadorClique;
+let cronometro;
 let qdtCartas;
 let baralho;
-let timer;
 
 
 function jogar() {
     setTimeout(function() {
         
+        timer = 0;
+        pontuacao = 0;
         baralho = [];
         contadorClique = 0;
 
@@ -15,7 +19,7 @@ function jogar() {
         qdtCartas = Number(qdtCartas);
 
         while ((qdtCartas % 2) !== 0 || qdtCartas < 4 || qdtCartas > 14) {
-            qdtCartas = prompt("Com quantas cartas deseja jogar?");
+            qdtCartas = prompt("Por favor, insira um número par entre 4 e 14.");
             qdtCartas = Number(qdtCartas);
         }
 
@@ -54,6 +58,8 @@ function colocarCartas() {
             </div>
         </div>`;
     }
+
+    cronometro = setInterval(temporizador, 1000);
 }
 
 
@@ -76,7 +82,17 @@ function verificarCards() {
         if (card1 === card2) {
             cartasViradas.item(0).classList.add("parCerto");
             cartasViradas.item(1).classList.add("parCerto");
+
+            pontuacao += 100;
+        } else {
+            pontuacao -= 10;
         }
+
+        if (pontuacao < 0) {
+            pontuacao = 0;
+        }
+
+        document.querySelector(".pontuacao").innerHTML = `Pontuação final: ${pontuacao}`;
 
         setTimeout(() => {
             cartasViradas.item(0).classList.remove("virar");
@@ -93,12 +109,14 @@ function finalizarJogo() {
 
     if (cartasCertas.length === qdtCartas) {
 
+        clearInterval(cronometro);
+
         setTimeout(() => {
             document.querySelector(".fim").classList.add("finish");
         }, 500);
 
         setTimeout(() => {
-            alert(`Você ganhou em ${contadorClique} jogadas!`);
+            alert(`Você ganhou em ${contadorClique} jogadas!\nTempo de partida: ${timer} segundos\nPontuação final: ${pontuacao} pontos`);
         }, 700);
 
         setTimeout(() => {
@@ -117,6 +135,8 @@ function reiniciarPartida() {
 
     if (reiniciar === 'sim') {
         document.querySelector(".mesa").innerHTML = '';
+        document.querySelector(".temporizador").innerHTML = 0;
+        document.querySelector(".pontuacao").innerHTML = `Pontuação final: 0`;
         jogar();
     }
 
@@ -124,13 +144,12 @@ function reiniciarPartida() {
 }
 
 
+function temporizador() {
+    timer++;
+    document.querySelector(".temporizador").innerHTML = timer;
+}
+
+
 function embaralhar() {
     return Math.random() - 0.5;
 }
-
-/*
-function timer() {
-    timer++;
-    console.log(timer);
-}
-*/
