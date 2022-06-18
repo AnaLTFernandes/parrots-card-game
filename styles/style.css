@@ -23,6 +23,10 @@ body > div {
     left: 0;
 }
 
+.titulo {
+    margin-top: 15px;
+}
+
 h1 {
     font-weight: 700;
     font-size: 56px;
@@ -100,23 +104,34 @@ div img {
     border: 1px solid rgb(101 187 131);
     box-shadow: 2px 1px 5px dimgrey;
     position: fixed;
-    right: 0;
-    top: 98px;
+    right: -100px;
+    top:4px;
     color: darkslategray;
     font-size: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: right .7s linear;
     z-index: 1;
 }
 
 .pontuacao {
-    width: 230px;
+    width: 170px;
     justify-content: flex-start;
     padding: 0 4px;
     right: auto;
-    left: 0;
+    left: -200px;
     border-radius: 0 10px 10px 0;
+    box-shadow: -2px 1px 5px dimgrey;
+    transition: left .7s linear;
+}
+
+.temporizador.comecar {
+    right: 0px;
+}
+
+.pontuacao.comecar {
+    left: 0px;
 }
 
 @media (max-width: 767px) {
@@ -130,12 +145,15 @@ div img {
         display: flex;
     }
 
-    .temporizador {
-        width: 60px;
-        top: 3px;
+    .temporizador,
+    .pontuacao {
+        width: 50px;
+        font-size: 18px;
+        height: 30px;
     }
 
     .pontuacao {
-        display: none;
+        width: 130px;
+        position: absolute;
     }
 }
