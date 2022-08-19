@@ -8,7 +8,7 @@ Jogo da memória com imagens de papagaios, onde se pode escolher com quantas car
   
 </div>
 
-Jogue aqui: <a target="_blank" href="https://analtfernandes.github.io/parrots-card-game/"> https://analtfernandes.github.io/parrots-card-game/ </a>
+Jogue aqui: [https://analtfernandes.github.io/parrots-card-game/](https://analtfernandes.github.io/parrots-card-game/)
 
 <br />
 
